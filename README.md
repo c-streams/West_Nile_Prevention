@@ -10,9 +10,17 @@ The goals for this project were to build a machine learning model to predict the
 
 ## Data Analysis
 
-Data was brought in from different sources that included weather, pesticide sprays, and mosquito trap information over time. Organizationally, the data was aggregated from the different sources and cleaned in order to remove issues pertaining to missing information or incorrectly logged data. In order to use all the data in our models, some text features were converted to be represented numerically. For example, this was done for the mosquito species feature.
+We utilized 3 datasets:
 
-Visualization was used extensively to uncover trends around spraying location, trap location and west nile outbreaks for each year. The dataset only included years that were odd(2013 for example), which meant it was not possible to determine year to year trends. Feature engineering was performed in order to calculate distances relative to the weather stations.
+1. NOAA weather conditions from 2007 – 2014
+2. GIS data from 2011 and 2013 pesticide spray efforts by Vector International 
+3. Mosquito trap West Nile surveillance test results from 2007 – 2014
+
+Organizationally, the data was aggregated and cleaned in order to remove issues pertaining to missing information or incorrectly logged data. In order to use all the data in our models, some text features were converted to be represented numerically. A plot representing weather stations (airports), trap locations, and spray locations is shown in Figure 1.
+
+Visualization was used extensively to uncover trends around spraying location, trap location and west nile outbreaks for each year. The dataset only included years that were odd (2013 for example), which meant it was not possible to determine year to year trends. Feature engineering was performed in order to calculate distances relative to the weather stations. Figure 2 shows the location and density of West Nile presence (in red) in our training data. The spray locations in 2011 and 2013 are represented in yellow. From this visualization, it becomes obvious that there are varying patterns of West Nile per year. 2007 and 2013 had the highest number of positive cases. Pesticide spray efforts in 2011 and 2013 targeted some outbreak areas, but the largest areas were not addressed, leaving room for improvement. 
+
+Additionally, we wanted to verify the belief that West Nile virus thrives in hot and dry conditions. Figure 3 confirms this belief, as we see the most cases in the lower right corner of high average temperature and low precipitation. There are no cases in cold and wet conditions. We will use this insight to inform our feature selection when modeling, as there are many features which measure the hot and dry condition.
 
 The data was found to be imbalanced with a ratio of 1:20 positives to negatives for our target variable of West Nile Virus. In order to deal with this, a combination of oversampling and undersampling were used in the form of the SMOTEENN method to reach a 1:1 ratio. With all the data thuroughly understood, it was time to develop a model to predict our target, West Nile Virus occurrence. 
 
